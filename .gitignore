@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# ingore quarter
+Notebooks/*
+!Notebooks/*.qmd
+
 # Distribution / packaging
 .Python
 build/

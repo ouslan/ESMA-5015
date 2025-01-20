@@ -1,0 +1,40 @@
+
+---
+title: "ESMA 5015: Introduction to simultaions"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+```{python}
+import os
+os.chdir("..")
+```
+
+```{python}
+import pandas as pd
+```
+
+```{r}
+sample(1:6)
+```
+
+# Introduction 
+
+Sea $X$ una variable aleatoria tal que $p(x=i)=\frac{1}{6}$, $i=1,2,3,4,5,6$
+calcule $E[X]$
+$$E[X] = \sum^6_{i=1} P(x=i)$$
+$$
+
+
+## assignment 
+- generate the random number 
+- generate cumsum 
+- generate graphs
+- mean 
+- graph frequencyis 
+- calculate the probability to observe pair and the expected value (simulate)
+
+
+
