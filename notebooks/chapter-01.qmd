@@ -13,7 +13,11 @@ os.chdir("..")
 ```
 
 ```{python}
+import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
+
+np.random.seed(787)
 ```
 
 ```{r}
@@ -37,4 +41,32 @@ $$
 - calculate the probability to observe pair and the expected value (simulate)
 
 
+## Assignment
+```{python}
+# Calculation the expected value
+x = 0
+for i in range(1,4):
+  x += 1/2*i
+print(x)
+```
+
+```{python}
+# Generateing random number 
+sample = 1000
+X = np.random.choice(range(1,7),sample)
+cumsum = np.cumsum(X)/np.arange(1,sample+1)
+plt.plot(cumsum)
+```
+
+```{python}
+sample = 10000
+out = []
+X = np.random.choice(range(1,7),sample)
+for num in X:
+  if num % 2 == 0:
+    out.append(num)
+data = np.array(out)
+cumsum = np.cumsum(data)/np.arange(1,len(data)+1)
+plt.plot(cumsum)
+```
 
