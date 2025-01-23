@@ -13,6 +13,9 @@ os.chdir("..")
 
 ```{python}
 import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(787)
 ```
 
 
@@ -23,11 +26,12 @@ import numpy as np
 - simulate $x_i \binomial(y_i,p)$
 
 ```{python}
-lamda = 2
-size = 100
+lamda = 50
+size = 1000
 y = np.random.poisson(lamda, size=size)
-x = np.random.binomial(y, p=.4, size=size)
-x
+x = np.random.binomial(y, p=.57, size=size)
+count, bin, ignoresd = plt.hist(x,50)
+plt.show()
 
 ```
 
