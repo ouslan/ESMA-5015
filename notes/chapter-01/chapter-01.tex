@@ -1,0 +1,47 @@
+\documentclass[10pt, oneside]{article}
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+
+
+\title{ESMA 5015: Simulaciones Estocasticas}
+\author{Alejandro Ouslan}
+\date{Spring 2025}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\vspace{.25in}
+
+\section{Introduccion}
+
+Sea $X$ una variable aleatoria (V.A) tal que
+$$ p(X = i) = \frac{1}{n} \quad \text{para } i = 1, 2, \ldots, n. $$
+
+Calcule $E[X]$
+\[
+	\begin{split}
+		E[X] & = \sum_{i=1}^{n} i \cdot p(X = i)       \\
+		     & = \sum_{i=1}^{6} i \cdot \frac{1}{6}    \\
+		     & = \frac{1}{6} \sum_{i=1}^{6} i          \\
+		     & = \frac{1}{6} \cdot \frac{6 \cdot 7}{2} \\
+		     & = \frac{7}{2} = 3.5
+	\end{split}
+\]
+\end{document}

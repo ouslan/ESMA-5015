@@ -1,0 +1,75 @@
+---
+title: "ESMA 5015: Homework 1"
+format:
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    fig-align: "center"
+---
+
+## Problema 1
+
+### Parte 1
+
+- Demuestre que la distribución Exponencial cumple la propiedad de 
+  falta de memoria (*memoryless property*) que estudiamos para la 
+  distribución Geométrica. $P(X > x + t | X > t) = P(X > x)$
+
+$$
+\begin{split}
+P(X > x + t | X > t) &\implies \frac{P(X > x + t)}{P(X > t)} \\
+&\implies \frac{P(X > x)P(X > t)}{P(X > t)} \\
+&\implies \frac{e^{-\lambda(x+t)}}{e^{-\lambda t}} \\
+&\implies e^{-\lambda x} \\
+&\implies P(X > x)
+\end{split}
+$$
+
+### Parte 2
+
+- Describa cómo compara la distribución Weibull con la distribución 
+  Exponencial.
+
+La distribución Weibull es una generalización de la distribución.
+Exponencial. La distribución Weibull tiene dos parámetros, mientras 
+que la distribución Exponencial tiene un solo parámetro.
+
+## Problema 2
+
+Considere el problema de muestrear en una población de moscas fruteras hasta encontrar 100
+moscas fruteras con cierto tipo de alas. Suponga que la probabilidad de que una mosca
+frutera particular tenga ese tipo de ala es 0.5.
+
+### Parte 1 
+
+- Calcule la probabilidad de que se deba examinar al menos 180 moscas fruteras
+  lograrlo.
+```{python}
+import scipy.stats as stats
+
+p = 0.5
+n = 180
+k = 100
+
+print(stats.binom.sf(k, n, p, loc=1))
+```
+
+### Parte 2
+
+- Aproxime esta probabilidad usando simulaciones. Lleve a cabo la simulación y presente la
+probabilidad empírica que obtiene y una gráfica de la convergencia de su aproximación a
+la probabilidad que calculó en la parte a.
+
+```{python}
+import numpy as np
+
+rng = np.random.default_rng(seed=787)
+n_sims = 10000
+n = 180
+k = 100
+p = 0.5
+
+simulations = rng.binomial(n, p, n_sims)
+print(np.mean(simulations >= k))
+```

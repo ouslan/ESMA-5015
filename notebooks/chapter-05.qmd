@@ -1,0 +1,19 @@
+---
+title: "ESMA 5015: Introduction to simultaions"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+##
+
+- Gnerar una variable alatoria distribits
+
+## Algoritmo 
+
+1. Genera $u \sim U(0,1)$
+$$
+\begin{cases}
+\end{cases}
+$$

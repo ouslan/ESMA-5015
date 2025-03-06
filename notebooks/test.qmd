@@ -1,0 +1,14 @@
+---
+title: "ESMA 5015: Introduction to simultaions"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(787)
+```

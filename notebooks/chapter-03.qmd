@@ -1,0 +1,48 @@
+---
+title: "ESMA 5015: Introduction to simultaions"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+```{python}
+import os
+os.chdir("..")
+```
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(787)
+```
+
+- Se puede entender como un solo insecto o muchos insectos, en terminos de pensar que no se 
+  tenia huevos auna mismo promedio $\lamda$ por lo podemos modelar $\lamda$. 
+  $$
+  \begin{split}
+  x|y &\sim \binomial(y,p)\\
+  y|\lamda &\sim \poisson(\lamda)
+  \label \sim \poisson(\lamda)
+  \end{split}
+  $$
+
+## Metodo 1 (usando el valor esperado)
+$$
+\begin{split}
+E[x] = E[E[x|y]] = E[y \cdot p] = p \cdot E[y] \\
+E[y] = E[E[y|\lamda]] = E[\lamda] \\
+E[\lamda] = \beta \\
+\end{split}
+$$
+
+## Metodo 2 (hallando la disstribucion de $y$)
+
+```{python}
+np.random.sample(range(1000))
+
+```
+
+
+

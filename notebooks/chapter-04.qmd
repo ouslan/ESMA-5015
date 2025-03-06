@@ -1,0 +1,19 @@
+---
+title: "ESMA 5015: Introduction to simultaions"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+```{python}
+import os
+os.chdir("..")
+```
+
+## Simulaciones de Batas 
+
+### Terema 
+- sea $X$ una varaiable alatoria distribuida $$f_x(x) y $y= g(x) dodnde $g$ es una funcion tronxana y $g^{-1}$ 
+  tiene una derivada continua en el campo de enteros de $Y$, entonces 
+  $f_y(y) = \begin{case} vf_x(g^{-1})| \frac{d}{dy}g^{-1}) o 0\end{case}$
