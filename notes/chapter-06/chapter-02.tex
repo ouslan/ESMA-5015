@@ -1,0 +1,175 @@
+\documentclass[10pt, oneside]{article}
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+
+
+\title{ESMA 5015: Simulaciones Estocasticas}
+\author{Alejandro Ouslan}
+\date{Spring 2025}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\vspace{.25in}
+
+\section{notes for 2025-03-06}
+
+\[
+	\begin{split}
+		E(w) = \alpha \beta \\
+		w\sim gamma(\alpha, \beta) \quad var(w) = \alpha \beta^2
+	\end{split}
+\]
+
+
+\[
+	\begin{split}
+		F_y (g) & = \frac{1}{2} e^{-y} + \frac{1}{2} y e^{-y} \\
+		E[y]    & = \int_0^\infty y f_y(y) dy                 \\
+		        & = \frac{1}{2} E[y_1] + \frac{1}{2} E[y_2]   \\
+		y_1     & \sim gamma(1,1)                             \\
+		y_2     & \sim gamma(2,1)                             \\
+		        & = \frac{1}{2} 1 + \frac{1}{2} 2             \\
+		        & = \frac{3}{2}                               \\
+	\end{split}
+\]
+
+
+\[
+	\begin{split}
+		var (y) & = E[y^2] - E[y]^2               \\
+		E[y^2]  & = \int_0^\infty y^2 f_y(y) dy   \\
+		        & = .5 E[y_1^2] + .5 E[y_2^2]     \\
+		        & = \frac{1}{2} 2 + \frac{1}{2} 6 \\
+		        & = 4                             \\
+	\end{split}
+\]
+
+\[
+	\begin{split}
+		E[y_1^2] & = var(y_1) + E[y_1]^2 \\
+		         & = 1 + 1^2             \\
+		         & = 2
+	\end{split}
+\]
+
+\[
+	\begin{split}
+		E[y_2^2] & = var(y_2) + E[y_2]^2 \\
+		         & = 2 + 2^2             \\
+		         & = 6
+	\end{split}
+\]
+
+\[
+	\begin{split}
+		 & = 4- \frac{3}{2}^2 \\
+		 & = 4 - \frac{9}{4}  \\
+		 & = \frac{7}{4}
+	\end{split}
+\]
+
+\section{Consideren un algoritmo Accept-Reject para simular $X \sim N(0,1)$}
+
+\begin{enumerate}
+	\item usando $Y \sim cauchy(0,1)$
+	      $$
+		      F_Y(y) = \frac{1}{\pi} \frac{1}{1+y^2} \quad y \in \R
+	      $$
+	\item usando $Y \sim double-exponential(0,1)$
+	      $$
+		      f_Y(y) = \frac{1}{2} e^{-|y|} \quad y \in \R
+	      $$
+\end{enumerate}
+
+\subsection{theory}
+\begin{enumerate}
+	\item calculate $M = \sup_x \frac{f_X(x)}{f_Y(y)}$
+	      \[
+		      \begin{split}
+			       & = \sup_x \frac{\frac{1}{\sqrt{2\pi}} e^{-x^2/2}}{\frac{1}{\pi} \frac{1}{1+x^2}} \\
+			       & = \sup_x \frac{\pi}{\sqrt{2}} e^{-x^2/2} (1+x^2)                                \\
+		      \end{split}
+	      \]
+	      sea $h(x) = e^{-x^2/2} (1+x^2)$
+	      \[
+		      \begin{split}
+			      \frac{d h(x)}{dx} & = -x e^{-x^2/2}(1+x^2) + e^{-x^2/2} 2x \\
+			                        & = \vdots                               \\
+			                        & = -x e^{-x^2/2}(x^2-1)                 \\
+		      \end{split}
+	      \]
+	      $\frac{d h(x)}{dx} = 0 \Rightarrow x = 0, \pm 1$
+	      puede demostra maxiomo occurra en $x = \pm 1$
+	      $\implies M = \frac{w \sqrt{\pi}}{\sqrt{2}} e^{-1/2} = 1.52$
+\end{enumerate}
+
+\subsection{algorithm}
+
+\begin{enumerate}
+	\item simular $Y \sim cauchy(0,1)$ y $U \sim U(0,1)$ independientes.
+	\item si
+	      \[
+		      \begin{split}
+			      U < \frac{f_X(Y)}{M f_Y(Y)}                                                 \\
+			       & = \frac{1}{\sqrt{2\pi}} e^{-1/2} \frac{\sqrt{\pi}}{\sqrt{\pi}} (1 + Y^2) \\
+			       & = \frac{1}{2}(1 + Y^2) e^{\frac{-Y^2 +1}{2}}                             \\
+		      \end{split}
+	      \]
+	      aceptar $X = Y$
+	\item si no, regresar a paso 1.
+\end{enumerate}
+
+\subsection{steps}
+\begin{enumerate}
+	\item
+	      \[
+		      \begin{split}
+			      M = \sup_x \frac{f_X(x)}{f_Y(y)} & = \sup_x \frac{\int \frac{1}{\sqrt{2\pi}} e^{-x^2/2}}{\frac{1}{2} e^{-|x|}} \\
+			                                       & = \sup_x \frac{\sqrt{2}}{\sqrt{\pi}} e^{-x^2/2 + |x|}                       \\
+			      h(x) = \ln \left( e^{-x^2/2 + |x|} \right)                                                                     \\
+			      \frac{d h(x)}{dx} = \frac{d}{dx} \left( -\frac{x^2}{2} + |x| \right) = \begin{cases}
+				                                                                             -x - 1 & x < 0 \\
+				                                                                             -x + 1 & x > 0 \\
+			                                                                             \end{cases}                          \\
+			      \frac{d h(x)}{dx} = 0 \Rightarrow x = \pm 1
+		      \end{split}
+	      \]
+	      debe demostrar que el supremo ocure en $x = \pm 1$
+\end{enumerate}
+
+\subsection{algorithm}
+
+\begin{enumerate}
+	\item $M = \frac{\sqrt{2}}{\sqrt{\pi}} e^{-1/2 + 1} = 1.31$
+	\item simular $Y \sim double-exponential(0,1)$ y $U \sim U(0,1)$ independientes.
+	\item si
+	      \[
+		      \begin{split}
+			      U < \frac{f_X(Y)}{M f_Y(Y)}                                      \\
+			       & = \frac{\sqrt{\pi}}{\sqrt{2}e^{1\2}} e^{\frac{-y^2}{2} + |y|} \\
+			       & = e^{\frac{-y^2}{2} + |y| - 1/2}                              \\
+		      \end{split}
+	      \]
+	      entonces aceptar $X = Y$
+	\item si no, regresar a paso 2.
+\end{enumerate}
+
+\end{document}
