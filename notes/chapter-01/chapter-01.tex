@@ -44,4 +44,39 @@ Calcule $E[X]$
 		     & = \frac{7}{2} = 3.5
 	\end{split}
 \]
+
+para generar alores de un avariable aleatoria se usa sample(1:6, observasiones, replace = TRUE). Detras del sample hay una distribucion uniforme. 
+El generador aleatorio es bueno si internamente genera buenas variables uniformes.
+
+\section{Distribusion empirica e probabilidad}
+
+$t = 1, 2, \ldots, n$ 
+
+
+\section{Simulacion de insectos}
+
+Un insecto produce un gran numero de huevos y cada uno sobrevive con probabilidad $p$. en promedio. Cuantos huevos sobreviven?
+
+\subsection{Metodo 1}
+
+\begin{enumerate}
+  \item variable aleatoria $x = \text{numero de huevos}$ y $x \sim \text{Binomial}(n, p)$
+  \item variable aleatoria $y= \text{un gran numero de huevos}$ y $y \sim \text{Poisson}(\lambda)$
+\end{enumerate}
+
+Si $x$ y $y$ son variables aleatorias, entonces $E[x] = E[E[x|y]]$
+
+\[
+  \begin{split}
+    E[x|y] = yp \\ 
+    E[x] = E[yp] = pE[y] = p\lambda \\
+  \end{split}
+\]
+
+\subsection{Metodo 2}
+
+
+
+
+
 \end{document}
