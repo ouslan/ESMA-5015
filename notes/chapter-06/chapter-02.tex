@@ -18,7 +18,7 @@
 \newtheorem{cor}{Corollary}
 
 
-\title{ESMA 5015: Simulaciones Estocasticas}
+\title{ESMA 5015: Accept Reject}
 \author{Alejandro Ouslan}
 \date{Spring 2025}
 
@@ -163,13 +163,105 @@
 	\item si
 	      \[
 		      \begin{split}
-			      U < \frac{f_X(Y)}{M f_Y(Y)}                                      \\
-			       & = \frac{\sqrt{\pi}}{\sqrt{2}e^{1\2}} e^{\frac{-y^2}{2} + |y|} \\
-			       & = e^{\frac{-y^2}{2} + |y| - 1/2}                              \\
+			      U < \frac{f_X(Y)}{M f_Y(Y)}         \\
+			      %& = \frac{\sqrt{\pi}}{\sqrt{2}e^{1\2}} e^{\frac{-y^2}{2} + |y|} \\
+			       & = e^{\frac{-y^2}{2} + |y| - 1/2} \\
 		      \end{split}
 	      \]
 	      entonces aceptar $X = Y$
 	\item si no, regresar a paso 2.
 \end{enumerate}
+
+
+\section{Generar una $X \sim Beta(\alpha,\beta)$}
+
+Donte $0 < x < 1$ y $\alpha, \beta > 0$
+
+Utilizar $y \sim U(0,1)$.
+
+\[
+	\begin{split}
+		M                 & = \sup_x \frac{f_X(x)}{f_Y(y)} = \frac{\frac{\gamma(\alpha + \beta)}{\gamma(\alpha)\gamma(\beta)}x^{\alpha - 1}(1-x)^{\beta-1}}{1} \\
+		h(x)              & = \ln{\left( X^{\alpha - 1}(1-x)^{\beta - 1} \right)}                                                                              \\
+		\frac{d h(x)}{dx} & = \frac{\alpha - 1}{x} - \frac{\beta - 1}{1-x}                                                                                     \\
+		\frac{d h(x)}{dx} & = 0 \Rightarrow x = \frac{\alpha - 1}{\alpha + \beta - 2}  \text{ y } \beta != 1, \alpha != 1                                      \\
+	\end{split}
+\]
+
+puede demostrar que en esta $X$ OCURRE UN maxiomo
+
+\subsection{algorithm}
+
+\begin{enumerate}
+	\item Generar $y \sim U(0,1)$ y $U \sim U(0,1)$ independientes.
+	\item Si
+	      \[
+		      \begin{split}
+			      u < \frac{f_X(y)}{M f_Y(y)} & = \frac{\frac{\gamma(\alpha + \beta)}{\gamma(\alpha)\gamma(\beta)}y^{\alpha - 1}(1-y)^{\beta-1}}
+			      {\frac{\gamma(\alpha + \beta)}{\gamma(\alpha)\gamma(\beta)} \frac{\alpha - 1}{\alpha + \beta - 2}^{\alpha - 1}(1-\frac{\alpha - 1}{\alpha + \beta - 2})^{\beta-1}} \\
+		      \end{split}
+	      \]
+	      define $X=y$
+	\item si no, regresar a paso 1.
+\end{enumerate}
+
+\section{Ejemplo generar $X \sim Beta( \alpha=2.7, \beta=6.3)$}
+
+$M= 2.6667444$  que ocurre en $x = \frac{2.7 - 1}{2.7 + 6.3 - 2} = 0.2428$
+
+\subsection{algorithm}
+
+\begin{enumerate}
+	\item Generar $y \sim U(0,1)$ y $U \sim U(0,1)$ independientes.
+	\item Si
+	      \[
+		      \begin{split}
+			      u < \frac{f_X(y)}{M f_Y(y)} & = \frac{\frac{\gamma(\alpha + \beta)}{\gamma(\alpha)\gamma(\beta)}y^{\alpha - 1}(1-y)^{\beta-1}}
+			      {2.666744}
+		      \end{split}
+	      \]
+	      Define $X=y$
+	\item si no, regresar a paso 1.
+\end{enumerate}
+
+
+\section{Bayesian Inference}
+
+Accept y Metropolis Hasting (topico de la proxima clase) surgen naturlament en estadisticas Bayesiana. En el Analisis Bayesiano
+ademas de espexifixar el modelo de los datos observadpos $X = x_1, x_2, \ldots, x_n$ dado un vector de parametros desxonoxidos $\theta$
+definido por $f(x|\theta)$, se define $\theta$ como una variable aleatoria que tiene una distribucion priori $\pi(\theta)$. El
+Conocimiento de $\theta$ se axtualiza con cm el conocimiento que se obtiene de los datos basadosk la inferencia conxerniente a $\theta$.
+en la distribucion posterior definida por
+$$
+	\pi(\theta|x) = \frac{f(x|\theta) \pi(\theta)}{\int_{\Theta} f(x|\theta) \pi(\theta) d\theta} \text{ Teorema de Bayes}
+$$
+
+$$
+	\pi(\theta|x) \alpha f(x|\theta) \pi(\theta)
+$$
+
+\subsection{Ejemplo}
+
+$x_1, x_2, \ldots, x_n$ iid $Bernulli(\theta)$
+
+\subsubsection{Frecuentista}
+
+IC de $(1-\alpha)100\%$ para $\theta$
+
+$$
+	\hat{\theta} \pm z_{\alpha/2} \sqrt{\frac{\hat{\theta}(1-\hat{\theta})}{n}}
+$$
+
+
+\subsubsection{Bayesiana}
+
+$$
+	f(x_1, x_2, \ldots, x_n|\theta) = \prod_{i=1}^{n} \theta^{x_i} (1-\theta)^{1-x_i} = \theta^{\sum x_i} (1-\theta)^{n-\sum x_i}
+$$
+
+$$
+	\frac{\pi(\theta| x_1, x_2, \ldots, x_n) = \theta^{\sum x_i} (1-\theta)^{n-\sum x_i} \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)}\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}
+	{\int_{0} \theta^{\sum x_i} (1-\theta)^{n-\sum x_i} \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)}\theta^{\alpha - 1} (1-\theta)^{\beta - 1} d\theta}
+$$
 
 \end{document}
