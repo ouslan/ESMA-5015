@@ -43,11 +43,11 @@
 	\begin{split}
 		F_y (g) & = \frac{1}{2} e^{-y} + \frac{1}{2} y e^{-y} \\
 		E[y]    & = \int_0^\infty y f_y(y) dy                 \\
-		        & = \frac{1}{2} E[y_1] + \frac{1}{2} E[y_2]   \\
+		& = \frac{1}{2} E[y_1] + \frac{1}{2} E[y_2]   \\
 		y_1     & \sim gamma(1,1)                             \\
 		y_2     & \sim gamma(2,1)                             \\
-		        & = \frac{1}{2} 1 + \frac{1}{2} 2             \\
-		        & = \frac{3}{2}                               \\
+		& = \frac{1}{2} 1 + \frac{1}{2} 2             \\
+		& = \frac{3}{2}                               \\
 	\end{split}
 \]
 
@@ -56,33 +56,33 @@
 	\begin{split}
 		var (y) & = E[y^2] - E[y]^2               \\
 		E[y^2]  & = \int_0^\infty y^2 f_y(y) dy   \\
-		        & = .5 E[y_1^2] + .5 E[y_2^2]     \\
-		        & = \frac{1}{2} 2 + \frac{1}{2} 6 \\
-		        & = 4                             \\
+		& = .5 E[y_1^2] + .5 E[y_2^2]     \\
+		& = \frac{1}{2} 2 + \frac{1}{2} 6 \\
+		& = 4                             \\
 	\end{split}
 \]
 
 \[
 	\begin{split}
 		E[y_1^2] & = var(y_1) + E[y_1]^2 \\
-		         & = 1 + 1^2             \\
-		         & = 2
+		& = 1 + 1^2             \\
+		& = 2
 	\end{split}
 \]
 
 \[
 	\begin{split}
 		E[y_2^2] & = var(y_2) + E[y_2]^2 \\
-		         & = 2 + 2^2             \\
-		         & = 6
+		& = 2 + 2^2             \\
+		& = 6
 	\end{split}
 \]
 
 \[
 	\begin{split}
-		 & = 4- \frac{3}{2}^2 \\
-		 & = 4 - \frac{9}{4}  \\
-		 & = \frac{7}{4}
+		& = 4- \frac{3}{2}^2 \\
+		& = 4 - \frac{9}{4}  \\
+		& = \frac{7}{4}
 	\end{split}
 \]
 
@@ -104,16 +104,16 @@
 	\item calculate $M = \sup_x \frac{f_X(x)}{f_Y(y)}$
 	      \[
 		      \begin{split}
-			       & = \sup_x \frac{\frac{1}{\sqrt{2\pi}} e^{-x^2/2}}{\frac{1}{\pi} \frac{1}{1+x^2}} \\
-			       & = \sup_x \frac{\pi}{\sqrt{2}} e^{-x^2/2} (1+x^2)                                \\
+			      & = \sup_x \frac{\frac{1}{\sqrt{2\pi}} e^{-x^2/2}}{\frac{1}{\pi} \frac{1}{1+x^2}} \\
+			      & = \sup_x \frac{\pi}{\sqrt{2}} e^{-x^2/2} (1+x^2)                                \\
 		      \end{split}
 	      \]
 	      sea $h(x) = e^{-x^2/2} (1+x^2)$
 	      \[
 		      \begin{split}
 			      \frac{d h(x)}{dx} & = -x e^{-x^2/2}(1+x^2) + e^{-x^2/2} 2x \\
-			                        & = \vdots                               \\
-			                        & = -x e^{-x^2/2}(x^2-1)                 \\
+			      & = \vdots                               \\
+			      & = -x e^{-x^2/2}(x^2-1)                 \\
 		      \end{split}
 	      \]
 	      $\frac{d h(x)}{dx} = 0 \Rightarrow x = 0, \pm 1$
@@ -129,8 +129,8 @@
 	      \[
 		      \begin{split}
 			      U < \frac{f_X(Y)}{M f_Y(Y)}                                                 \\
-			       & = \frac{1}{\sqrt{2\pi}} e^{-1/2} \frac{\sqrt{\pi}}{\sqrt{\pi}} (1 + Y^2) \\
-			       & = \frac{1}{2}(1 + Y^2) e^{\frac{-Y^2 +1}{2}}                             \\
+			      & = \frac{1}{\sqrt{2\pi}} e^{-1/2} \frac{\sqrt{\pi}}{\sqrt{\pi}} (1 + Y^2) \\
+			      & = \frac{1}{2}(1 + Y^2) e^{\frac{-Y^2 +1}{2}}                             \\
 		      \end{split}
 	      \]
 	      aceptar $X = Y$
@@ -143,12 +143,12 @@
 	      \[
 		      \begin{split}
 			      M = \sup_x \frac{f_X(x)}{f_Y(y)} & = \sup_x \frac{\int \frac{1}{\sqrt{2\pi}} e^{-x^2/2}}{\frac{1}{2} e^{-|x|}} \\
-			                                       & = \sup_x \frac{\sqrt{2}}{\sqrt{\pi}} e^{-x^2/2 + |x|}                       \\
+			      & = \sup_x \frac{\sqrt{2}}{\sqrt{\pi}} e^{-x^2/2 + |x|}                       \\
 			      h(x) = \ln \left( e^{-x^2/2 + |x|} \right)                                                                     \\
 			      \frac{d h(x)}{dx} = \frac{d}{dx} \left( -\frac{x^2}{2} + |x| \right) = \begin{cases}
-				                                                                             -x - 1 & x < 0 \\
-				                                                                             -x + 1 & x > 0 \\
-			                                                                             \end{cases}                          \\
+				      -x - 1 & x < 0 \\
+				      -x + 1 & x > 0 \\
+			      \end{cases}                          \\
 			      \frac{d h(x)}{dx} = 0 \Rightarrow x = \pm 1
 		      \end{split}
 	      \]
@@ -165,7 +165,7 @@
 		      \begin{split}
 			      U < \frac{f_X(Y)}{M f_Y(Y)}         \\
 			      %& = \frac{\sqrt{\pi}}{\sqrt{2}e^{1\2}} e^{\frac{-y^2}{2} + |y|} \\
-			       & = e^{\frac{-y^2}{2} + |y| - 1/2} \\
+			      & = e^{\frac{-y^2}{2} + |y| - 1/2} \\
 		      \end{split}
 	      \]
 	      entonces aceptar $X = Y$
@@ -263,5 +263,46 @@ $$
 	\frac{\pi(\theta| x_1, x_2, \ldots, x_n) = \theta^{\sum x_i} (1-\theta)^{n-\sum x_i} \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)}\theta^{\alpha - 1} (1-\theta)^{\beta - 1}}
 	{\int_{0} \theta^{\sum x_i} (1-\theta)^{n-\sum x_i} \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \Gamma(\beta)}\theta^{\alpha - 1} (1-\theta)^{\beta - 1} d\theta}
 $$
+
+En este caso la distribucion a priori es cojugada com $f(x|\theta)$ porque $\pi(\theta|x)$ pertenece a la misma
+familia de la distribucion pariori.
+
+\subsubsection{Calculation}
+\[
+	\begin{split}
+		E[\theta|x_1, x_2, \ldots, x_n] & = \frac{\sum x_i + \alpha}{\sum x_i \alpha + n - \sum x_i + \beta} \\
+		&= \frac{\sum x_i + \alpha}{n + \alpha + \beta} \\
+	\end{split}
+\]
+
+Si $n$ es mucho mayor que $\alpha + \beta$ el promedio posterior se inclina hacia el promedio muestral
+
+\subsection{Assignment}
+
+Considere $X_1, X_2, \ldots, X_n; \sigma^2$ conocido y la distribucion a priori
+\[
+	\pi(\theta) = N(\mu_0, \tau^2)
+\]
+
+Demuestre que
+\[
+	\pi(\theta|x_1, x_2, \ldots, x_n) ~ N(\frac{n\hat{x} + \frac{\mu}{\tau^2}}{\frac{n}{\sigma^2} +\frac{1}{\tau^2}}, \frac{1}{\frac{n}{\sigma^2} +\frac{1}{\tau^2}})
+\]
+
+
+\section{Markor Chain Monte Calro (MCMC)}
+
+\begin{defn}
+	Un metodo MCMC para simular de una distibucion $F$ es cualquer metodoque
+	produzxa una cadena de MARKOV erogodica $X_N$ cuya distribucion
+	estacionari es $F$
+\end{defn}
+
+Elejemplos dde estos metodos:
+\begin{enumerate}
+	\item Metropolis-Hastings
+	\item Gibbs Sampling
+	\item Data Augmentation Algorithm
+\end{enumerate}
 
 \end{document}

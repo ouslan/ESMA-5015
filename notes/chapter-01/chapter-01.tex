@@ -38,19 +38,19 @@ Calcule $E[X]$
 \[
 	\begin{split}
 		E[X] & = \sum_{i=1}^{n} i \cdot p(X = i)       \\
-		     & = \sum_{i=1}^{6} i \cdot \frac{1}{6}    \\
-		     & = \frac{1}{6} \sum_{i=1}^{6} i          \\
-		     & = \frac{1}{6} \cdot \frac{6 \cdot 7}{2} \\
-		     & = \frac{7}{2} = 3.5
+		& = \sum_{i=1}^{6} i \cdot \frac{1}{6}    \\
+		& = \frac{1}{6} \sum_{i=1}^{6} i          \\
+		& = \frac{1}{6} \cdot \frac{6 \cdot 7}{2} \\
+		& = \frac{7}{2} = 3.5
 	\end{split}
 \]
 
-para generar alores de un avariable aleatoria se usa sample(1:6, observasiones, replace = TRUE). Detras del sample hay una distribucion uniforme. 
+para generar alores de un avariable aleatoria se usa sample(1:6, observasiones, replace = TRUE). Detras del sample hay una distribucion uniforme.
 El generador aleatorio es bueno si internamente genera buenas variables uniformes.
 
 \section{Distribusion empirica e probabilidad}
 
-$t = 1, 2, \ldots, n$ 
+$t = 1, 2, \ldots, n$
 
 
 \section{Simulacion de insectos}
@@ -60,17 +60,17 @@ Un insecto produce un gran numero de huevos y cada uno sobrevive con probabilida
 \subsection{Metodo 1}
 
 \begin{enumerate}
-  \item variable aleatoria $x = \text{numero de huevos}$ y $x \sim \text{Binomial}(n, p)$
-  \item variable aleatoria $y= \text{un gran numero de huevos}$ y $y \sim \text{Poisson}(\lambda)$
+	\item variable aleatoria $x = \text{numero de huevos}$ y $x \sim \text{Binomial}(n, p)$
+	\item variable aleatoria $y= \text{un gran numero de huevos}$ y $y \sim \text{Poisson}(\lambda)$
 \end{enumerate}
 
 Si $x$ y $y$ son variables aleatorias, entonces $E[x] = E[E[x|y]]$
 
 \[
-  \begin{split}
-    E[x|y] = yp \\ 
-    E[x] = E[yp] = pE[y] = p\lambda \\
-  \end{split}
+	\begin{split}
+		E[x|y] = yp \\
+		E[x] = E[yp] = pE[y] = p\lambda \\
+	\end{split}
 \]
 
 \subsection{Metodo 2}
