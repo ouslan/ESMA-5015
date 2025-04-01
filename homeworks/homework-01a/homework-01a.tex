@@ -171,16 +171,16 @@
 		\item Proceso matematico
 		      \[
 			      \begin{split}
-				      f(x) & = \frac{1}{\pi} \frac{b}{(x-a)^2+b^2} \\
-				      F_X(x) & = \int_{-\infty}^{x} f(x) dx \\
-				      F_X(x) & = \int_{-\infty}^{x} \frac{2}{\pi} \frac{b}{(x-a)^2+b^2} \\
-				      F_X(x) & = \frac{1}{\pi} \arctan(\frac{x-a}{b}) + \frac{1}{2} \\
-				      u & = \frac{1}{\pi} \arctan(\frac{x-a}{b}) + \frac{1}{2} \\
-				      u - \frac{1}{2} & = \frac{1}{\pi} \arctan(\frac{x-a}{b}) \\
-				      \pi(u - \frac{1}{2}) & = \arctan(\frac{x-a}{b}) \\
-				      \tan(\pi(u - \frac{1}{2})) & = \frac{x-a}{b} \\
-				      b \tan(\pi(u - \frac{1}{2})) + a & = x \\
-				      x &= a + b \tan(\pi(u - \frac{1}{2}))
+				      f(x)                             & = \frac{1}{\pi} \frac{b}{(x-a)^2+b^2}                    \\
+				      F_X(x)                           & = \int_{-\infty}^{x} f(x) dx                             \\
+				      F_X(x)                           & = \int_{-\infty}^{x} \frac{2}{\pi} \frac{b}{(x-a)^2+b^2} \\
+				      F_X(x)                           & = \frac{1}{\pi} \arctan(\frac{x-a}{b}) + \frac{1}{2}     \\
+				      u                                & = \frac{1}{\pi} \arctan(\frac{x-a}{b}) + \frac{1}{2}     \\
+				      u - \frac{1}{2}                  & = \frac{1}{\pi} \arctan(\frac{x-a}{b})                   \\
+				      \pi(u - \frac{1}{2})             & = \arctan(\frac{x-a}{b})                                 \\
+				      \tan(\pi(u - \frac{1}{2}))       & = \frac{x-a}{b}                                          \\
+				      b \tan(\pi(u - \frac{1}{2})) + a & = x                                                      \\
+				      x                                & = a + b \tan(\pi(u - \frac{1}{2}))
 			      \end{split}
 		      \]
 		\item algorithms
@@ -225,14 +225,14 @@ plt.show()
 		\item Proceso Matematico
 		      \[
 			      \begin{split}
-				      f(x) & = \frac{1}{\beta} e^{-\frac{x-\mu}{\beta} + e^{-\frac{x-\mu}{\beta}}} \\
-				      F_X(x) & = \int_{-\infty}^{x} f(x) dx \\
-				      F_X(x) & = \int_{-\infty}^{x} \frac{1}{\beta} e^{-\frac{x-\mu}{\beta} + e^{-\frac{x-\mu}{\beta}}} \\
-				      F_X(x) & = e^{-e^{-\frac{x-\mu}{\beta}}} \\
-				      u & = e^{-e^{-\frac{x-\mu}{\beta}}} \\
-				      \log(-\log(u)) & = -\frac{x-\mu}{\beta} \\
-				      \beta \log(-\log(u)) + \mu & = x \\
-				      x &= \beta \log(-\log(u)) + \mu
+				      f(x)                       & = \frac{1}{\beta} e^{-\frac{x-\mu}{\beta} + e^{-\frac{x-\mu}{\beta}}}                    \\
+				      F_X(x)                     & = \int_{-\infty}^{x} f(x) dx                                                             \\
+				      F_X(x)                     & = \int_{-\infty}^{x} \frac{1}{\beta} e^{-\frac{x-\mu}{\beta} + e^{-\frac{x-\mu}{\beta}}} \\
+				      F_X(x)                     & = e^{-e^{-\frac{x-\mu}{\beta}}}                                                          \\
+				      u                          & = e^{-e^{-\frac{x-\mu}{\beta}}}                                                          \\
+				      \log(-\log(u))             & = -\frac{x-\mu}{\beta}                                                                   \\
+				      \beta \log(-\log(u)) + \mu & = x                                                                                      \\
+				      x                          & = \beta \log(-\log(u)) + \mu
 			      \end{split}
 		      \]
 		\item algorithms

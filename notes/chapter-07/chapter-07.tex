@@ -1,0 +1,184 @@
+\documentclass[10pt, oneside]{article}
+\usepackage{amsmath, amsthm, amssymb, calrsfs, wasysym, verbatim, bbm, color, graphics, geometry}
+
+\geometry{tmargin=.75in, bmargin=.75in, lmargin=.75in, rmargin = .75in}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Cdot}{\boldsymbol{\cdot}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{conv}{Convention}
+\newtheorem{rem}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+
+
+\title{ESMA 5015: Simulaciones Estocasticas}
+\author{Alejandro Ouslan}
+\date{Spring 2025}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\vspace{.25in}
+
+\section{Introduccion}
+
+\subsection{generando $n$ para $\hat{p}_1$}
+Para Encontrar cuantas $n$ son necesarias para estimar la integracion de markovs
+\begin{enumerate}
+	\item Sea $n= \frac{z \sigma}{d}^2$, para un confianza de $95\%$ y $z=1.96$.
+	\item Para $\hat{p}_1 \rightarrow n = \frac{1.96 \sqrt{0.127}}{.01}^2$
+	\item
+\end{enumerate}
+
+\subsection{generando $n$ para $\hat{p}_2$}
+
+Para encontrar $p_2$:
+
+\begin{enumerate}
+	\item $n= \frac{1.96 \sqrt{0.052}}{.01}^2$
+	\item $n= 1998$
+\end{enumerate}
+
+\subsection{generando $n$ para $\hat{p}_3$}
+
+Para encontrar $p_3$:
+\begin{enumerate}
+	\item $n= \frac{1.96 \sqrt{0.0302}}{.01}^2$
+	\item $n= 1161$
+\end{enumerate}
+
+\section{Formulas utiles de Integracion de Monte Carlos}
+
+\begin{defn}[Formula]
+	\[
+		\begin{split}
+			\int_a^b g(x) dx & = \int_0^1 g(u(b-a) + a) (b-a) du                            \\
+			                 & \rightarrow \frac{1}{n} \sum_{i=1}^{n} g(u_i(b-a) + a) (b-a) \\
+		\end{split}
+	\]
+\end{defn}
+
+\begin{defn}[Formula]
+	\[
+		\begin{split}
+			\int_0^\infty g(x) dx & = \int_0^1 g(\frac{1}{u} - 1) \frac{1}{u^2} du                              \\
+			                      & \rightarrow \frac{1}{n} \sum_{i=1}^{n} g(\frac{1}{u_i} - 1) \frac{1}{u_i^2} \\
+		\end{split}
+	\]
+\end{defn}
+
+\section{Importabnce Sampling}
+
+En un metodo altenativo para la estimaxion $E_f[\ln{x}] = \int h(x) f(x) dx$ basado en una muestra
+de $x_1, x_2, \ldots, x_n$  de una distribucion $g(x)$, donde se aproxima.
+\[
+	\begin{split}
+		E_f[\ln{x}] & = \int h(x) f(x) dx                                                                              \\
+		            & = \int \frac{h(x) f(x)}{g(x)} g(x) dx                                                            \\
+		            & = \frac{1}{n} \sum_{i=1}^{n} \frac{h(x_i) f(x_i)}{g(x_i)} \xrightarrow{n \to \infty} E_f[\ln{x}]
+	\end{split}
+\]
+
+Un aventaja  de este metodo es que una misma muestra generada de $g$
+puede usar para estimar $E_f[\ln(x)]$ para diferentes $h$ y $f$. Aunque
+cualquier $g$ sea potencialmente posible, algun $g$ sin mejor que otro
+
+NOTE:
+$$
+	var(\frac{h(x)f(x)}{g(x)}) = E_g[\frac{h(x)^2f(x)^2}{g(x)}^2]- E_g[\frac{h(x)f(x)}{g(x)}]^2
+$$
+
+donde:
+
+\[
+	\begin{split}
+		E_g[\frac{h(x)^2f(x)^2}{g(x)}^2] & = \int \frac{h(x)^2f(x)^2}{g(x)}^2 g(x) dx \\
+		                                 & = \int h(x)^2 f(x)^2 \frac{g(x)}{g(x)} dx  \\
+	\end{split}
+\]
+\begin{enumerate}
+	\item $>M$ de modo que la varianza de estimar no son infinita (o sea pequena) similara a accept reject
+\end{enumerate}
+
+\subsection{Ejemplos de practicas}
+
+\subsubsection{Ejemplo 1}
+Considere $X \sim t_v$.
+\begin{enumerate}
+	\item $f_x(x) = \frac{\Gamma \frac{v+1}{2}}{\Gamma \frac{v}{2}} \frac{1}{v \sqrt{\pi}} \frac{1}{(1 + \frac{2^2}{v})\frac{v + 1}{2}}$
+	\item para $-\infty < x < \infty$
+	\item $E_x[x] = 0 \forall v > 2$
+	\item $var(x) = \frac{v}{v-2} \forall v > 2$
+\end{enumerate}
+
+Para $v=12$ Estimar:
+
+\begin{enumerate}
+	\item $E[\sqrt{|\frac{x}{1-x}|} = 1.13$
+	\item $E[x^2 I[x > 2.1] = 6.54$
+	\item $E[\frac{x^5}{1 + (x-3)^2}I[x \geq 0] = 4.64$
+\end{enumerate}
+
+Considere $g$
+\begin{enumerate}
+	\item $Caushy(0,1), v=1$
+	\item $N(0,\sigma^2 = \frac{v}{v-2})$ para que tengas lamisma varianza que $f$
+\end{enumerate}
+
+algoritmo
+
+\[
+	\begin{split}
+		E[\sqrt{|\frac{x}{1-x}|} & = \int_{-\infty}^{\infty} \sqrt{|\frac{x}{1-x}|} f(x) dx                        \\
+		                         & = \int_{-\infty}^{\infty} \frac{\sqrt{|\frac{x}{1-x}|}f(x)}{g(x)} g(x) dx       \\
+		                         & = \frac{1}{n} \sum_{i=1}^{n} \sqrt{|\frac{x_i}{1-x_i}|}\frac{f(x_i)}{g(x_i)} dx \\
+	\end{split}
+\]
+cuando $x_1, x_2, \ldots, x_n$ son idd de $g(x)$
+\begin{enumerate}
+	\item $g(x) = caushy(0,1)$
+	\item $g(x) = N(0,\sigma^2 \frac{v}{v-2})$
+	\item $f(x) = zv$
+\end{enumerate}
+
+
+\subsection{Ejemplo 2}
+
+\[
+	\begin{split}
+		E[x^2I[x > 2.1] & = \int_{-\infty}^{\infty} x^5 I[x > 2.1] f(x) dx                                               \\
+		                & = \int_{2.1}^{\infty} x^5 f(x) dx                                                              \\
+		                & = \int_{-\infty}^{\infty} \frac{x^5 I[x > 2.1] f(x)}{g(x)} g(x) dx                             \\
+		                & \xrightarrow{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} \frac{x_i^5 I[x_i > 2.1] f(x_i)}{g(x_i)} \\
+	\end{split}
+\]
+
+para el sigiente paso considere una transformacion:
+
+\begin{itemize}
+	\item $y= \frac{1}{x}$
+	\item $x= \frac{1}{y}$
+	\item $dx = -\frac{1}{y^2}$
+\end{itemize}
+
+entonces
+
+\[
+	\begin{split}
+		 & = \int_{1/2.1}^{0} \frac{1}{y^5} [-\frac{1}{y^2}] f(\frac{1}{y}) dy \\
+		 & = \int_{0}^{1/2.1} \frac{1}{y^7} f(\frac{1}{y}) dy                  \\
+		 & =
+	\end{split}
+\]
+
+
+\end{document}
