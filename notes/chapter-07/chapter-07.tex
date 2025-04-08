@@ -29,7 +29,7 @@
 
 \vspace{.25in}
 
-\section{Introduccion}
+\section{Importance sampling}
 
 \subsection{generando $n$ para $\hat{p}_1$}
 Para Encontrar cuantas $n$ son necesarias para estimar la integracion de markovs
@@ -155,13 +155,23 @@ cuando $x_1, x_2, \ldots, x_n$ son idd de $g(x)$
 
 \[
 	\begin{split}
-		E[x^2I[x > 2.1] & = \int_{-\infty}^{\infty} x^5 I[x > 2.1] f(x) dx                                               \\
-		                & = \int_{2.1}^{\infty} x^5 f(x) dx                                                              \\
-		                & = \int_{-\infty}^{\infty} \frac{x^5 I[x > 2.1] f(x)}{g(x)} g(x) dx                             \\
-		                & \xrightarrow{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} \frac{x_i^5 I[x_i > 2.1] f(x_i)}{g(x_i)} \\
+		E[x^5I[x > 2.1] & = \int_{-\infty}^{\infty} x^5 I[x > 2.1] f(x) dx                                                 \\
+		                & = \int_{2.1}^{\infty} x^5 f(x) dx                                                                \\
+		                & = \int_{-\infty}^{\infty} \frac{x^5 I[x \ge 2.1] f(x)}{g(x)} g(x) dx                             \\
+		                & \xrightarrow{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} \frac{x_i^5 I[x_i \ge 2.1] f(x_i)}{g(x_i)} \\
 	\end{split}
 \]
 
+se estan generando $x_1, x_2, \ldots, x_n$ a una distribucion $Caushy(0,1)$ y $N(0,\frac{v}{v-2})$.
+
+\[
+	\begin{split}
+		\bar{hn} & = \frac{1}{n} \sum_{i=1}^{n} h(x_i) \\
+		         & = \frac{1}{n^2} \sum
+	\end{split}
+\]
+
+\subsubsection{Metodo alterno}
 para el sigiente paso considere una transformacion:
 
 \begin{itemize}
