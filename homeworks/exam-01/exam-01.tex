@@ -93,29 +93,6 @@
     #3 % Third argument, delimited by {}, denotes options for the tcolorbox
 }
 
-%%% Starred version has no frame %%%
-\NewTCBListing{python*}{ !O{} !D(){} !G{} }{
-    listing engine=minted,
-    listing only,
-    pythoncodebox*={#1}, % First argument specifies the title (if any)
-    minted language=python,
-    minted options/.expanded={
-        autogobble,breaklines,mathescape,
-        #2 % Second argument, delimited by (), denotes options for the minted environment
-    },
-    #3 % Third argument, delimited by {}, denotes options for the tcolorbox
-}
-
-% verbbox environment, for showing verbatim text next to code output (for package documentation and user learning purposes)
-\NewTCBListing{verbbox}{ !O{} }{
-    listing engine=minted,
-    minted language=latex,
-    boxrule=1pt,sidebyside,skin=bicolor,
-    colback=gray!10,colbacklower=white,valign=center,
-    top=2pt,bottom=2pt,left=2pt,right=2pt,
-    #1
-} % Last argument allows more tcolorbox options to be added
-
 
 % Basic Document Settings
 \topmargin=-0.45in
@@ -155,13 +132,8 @@
 \author{\hmwkAuthorName}
 \date{}
 
-% New command for subproblems
-\newcommand{\subpart}[1]{
-	\refstepcounter{subpartCounter}
-	\textbf{\large Subproblem \thehomeworkProblemCounter.\thepartCounter.\arabic{subpartCounter}}\quad #1\\
-}
 
-\renewcommand{\part}[1]{\textbf{\large Part \thehomeworkProblemCounter.\thepartCounter}\stepcounter{partCounter}\\}
+
 
 % Begin document
 \begin{document}
@@ -193,11 +165,10 @@ $\alpha$ no es necesariamente un entero. Decide usar el algoritmo \textbf{Accept
 \subsection{Estime $E[X^2]$ y construya la grafica de la convergencia de los running means.}
 
 \section{Importance Sampling}
-\begin{python}[The function]
-	def next_two(x):
-	lst=[x+i for i in range(3)]
-	return lst
-\end{python}
+
+\begin{pythonbox}[title={The function}]
+	\inputminted{python}{test.py}
+\end{pythonbox}
 
 Usando Importance Sampling estime $E_f\left[ \frac{X^5}{1+(X - 3)^2}I[X \ge 0] \right]$, donde $f$ es la
 distribucion $t$ con $v=12$ Utilice las siguientes $g$:
