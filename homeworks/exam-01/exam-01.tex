@@ -1,0 +1,142 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+	language=Python,
+	backgroundcolor=\color{black!5}, % Light background for contrast
+	basicstyle=\ttfamily\small, % Font style and size
+	keywordstyle=\color{blue}\bfseries, % Blue color for keywords
+	commentstyle=\color{green!60!black}\itshape, % Green color for comments, italicized
+	stringstyle=\color{red}, % Red color for strings
+	numbers=left, % Show line numbers on the left side
+	numberstyle=\tiny\color{gray}, % Small, gray numbers
+	stepnumber=1, % Number every line
+	numbersep=5pt, % Distance between line numbers and code
+	frame=single, % Adds a frame around the code
+	rulecolor=\color{black}, % Frame color
+	captionpos=b, % Caption position at the bottom
+	breaklines=true, % Line break for long lines
+	breakatwhitespace=true, % Break lines at spaces
+	showstringspaces=false, % Don't show space as special character
+	morekeywords={lambda, with, as} % Add any extra keywords here
+}
+
+\usetikzlibrary{automata,positioning}
+
+% Basic Document Settings
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+\setlength\parindent{0pt}
+
+% Homework Details
+\newcommand{\hmwkTitle}{Examen 2}
+\newcommand{\hmwkDueDate}{Abril 10, 2025}
+\newcommand{\hmwkClass}{ESMA 5015}
+\newcommand{\hmwkClassInstructor}{Damaris Santana}
+\newcommand{\hmwkAuthorName}{\textbf{Alejandro Ouslan}}
+
+% Title Page
+\title{
+	\vspace{2in}
+	\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+	\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+	\vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+	\vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+% New command for subproblems
+\newcommand{\subpart}[1]{
+	\refstepcounter{subpartCounter}
+	\textbf{\large Subproblem \thehomeworkProblemCounter.\thepartCounter.\arabic{subpartCounter}}\quad #1\\
+}
+
+\renewcommand{\part}[1]{\textbf{\large Part \thehomeworkProblemCounter.\thepartCounter}\stepcounter{partCounter}\\}
+
+% Begin document
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+
+% Problem 1
+\section{Accept-Reject}
+Suponga que desea general variables aleatorias de una distribucion $Gamma(\alpha, \beta)$ donde
+$\alpha$ no es necesariamente un entero. Decide usar el algoritmo \textbf{Accept-Reject} con la funcion candidata $Gamma(a,b)$.
+
+\subsection{Por que es necesario que $a < \alpha$ y $b> \beta$}
+
+\subsection{Para $a = \left\lfloor \alpha \right\rfloor$, demuestre que $M$ ocurre en $x = \frac{\alpha - \left\lfloor \alpha \right\rfloor}{\frac{1}{\beta} - \frac{1}{b}}$}
+
+\subsection{Para $a = \left\lfloor \alpha \right\rfloor$, encuentre el valor optimo de $b$}
+
+% Problem 2
+\section{Implementacion del algoritmo}
+
+\subsection{Describa un algoritmo \textbf{Accept-Reject} para generar una variable aleatoria con distribucion $Gamma(3/2,1)$}
+
+
+\subsection{Algoritmo en Python}
+\subsection{Grafique el histograma de la distribucion obtenida sobreponiendo la distribucion deseada}
+
+\subsection{Estime $E[X^2]$ y construya la grafica de la convergencia de los running means.}
+
+\section{Importance Sampling}
+
+Usando Importance Sampling estime $E_f\left[ \frac{X^5}{1+(X - 3)^2}I[X \ge 0] \right]$, donde $f$ es la
+distribucion $t$ con $v=12$ Utilice las siguientes $g$:
+\begin{enumerate}
+	\item $Cauchy(0,1)$
+	\item $Normal(0, \frac{v}{v-2})$
+	\item $Exponencial(\lambda=1)$
+\end{enumerate}
+
+\subsection{Estimador importance Sampling}
+Para cada una de estas distribuciones presente el estimador que corresponde a la summatoria definida
+por el metodo de \textbf{Importance Sampling} y que converge al valor esperado de interes
+\subsubsection{$Cauchy(0,1)$}
+\subsubsection{$Normal(0, \frac{v}{v-2})$}
+\subsubsection{$Exponencial(\lambda=1)$}
+
+\subsection{Estimador Monte Carlo}
+Para cada uno presente el estimador que corresponde a la sumatoria definida por el metodo de Integracion
+Monte Carlos y que converge al valor esperado de interes.
+\subsubsection{$Cauchy(0,1)$}
+\subsubsection{$Normal(0, \frac{v}{v-2})$}
+\subsubsection{$Exponencial(\lambda=1)$}
+
+\subsection{Implementacion}
+
+\subsection{Graficas}
+Construya un asola graica y presente la convergencia de los running menas para los cuatro estimadores. Compare la varianza empirica de los
+cuatro estimadores
+
+
+\end{document}
