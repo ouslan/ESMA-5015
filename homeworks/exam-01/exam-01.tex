@@ -144,25 +144,27 @@
 
 % Problem 1
 \section{Accept-Reject}
-Suponga que desea general variables aleatorias de una distribucion $Gamma(\alpha, \beta)$ donde
-$\alpha$ no es necesariamente un entero. Decide usar el algoritmo \textbf{Accept-Reject} con la funcion candidata $Gamma(a,b)$.
+Suponga que desea general variables aleatorias de una distribución $Gamma(\alpha, \beta)$ donde
+$\alpha$ no es necesariamente un entero. Decide usar el algoritmo \textbf{Accept-Reject} con la función candidata $Gamma(a,b)$.
 
 \subsection{Por que es necesario que $a < \alpha$ y $b> \beta$}
+Esto es para asegurar un buen candidato que se asurque lo mas posible a la función objetivo, esto es con el propósito de
+hacer el algoritmo mas eficiente.
 
 \subsection{Para $a = \left\lfloor \alpha \right\rfloor$, demuestre que $M$ ocurre en $x = \frac{\alpha - \left\lfloor \alpha \right\rfloor}{\frac{1}{\beta} - \frac{1}{b}}$}
 
 \subsection{Para $a = \left\lfloor \alpha \right\rfloor$, encuentre el valor optimo de $b$}
 
 % Problem 2
-\section{Implementacion del algoritmo}
+\section{Implementación del algoritmo}
 
-\subsection{Describa un algoritmo \textbf{Accept-Reject} para generar una variable aleatoria con distribucion $Gamma(3/2,1)$}
+\subsection{Describa un algoritmo \textbf{Accept-Reject} para generar una variable aleatoria con distribución $Gamma(3/2,1)$}
 
 
 \subsection{Algoritmo en Python}
-\subsection{Grafique el histograma de la distribucion obtenida sobreponiendo la distribucion deseada}
+\subsection{Trafique el histograma de la distribución obtenida sobreponiendo la distribución deseada}
 
-\subsection{Estime $E[X^2]$ y construya la grafica de la convergencia de los running means.}
+\subsection{Estime $E[X^2]$ y construya la gráfica de la convergencia de los running means.}
 
 \section{Importance Sampling}
 
