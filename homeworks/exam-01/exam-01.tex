@@ -152,6 +152,19 @@ Esto es para asegurar un buen candidato que se asurque lo mas posible a la funci
 hacer el algoritmo mas eficiente.
 
 \subsection{Para $a = \left\lfloor \alpha \right\rfloor$, demuestre que $M$ ocurre en $x = \frac{\alpha - \left\lfloor \alpha \right\rfloor}{\frac{1}{\beta} - \frac{1}{b}}$}
+\[
+	\begin{split}
+		x & = \sup{\frac{f(x)}{g(x)}}                                                                                                                                                                \\
+		  & = \sup{\frac{Gamma(\alpha, \beta)}{Gamma(a,b)}}                                                                                                                                          \\
+		  & = \sup{\frac{\frac{1}{\Gamma(\alpha)\beta^\alpha}x^{\alpha-1} e^{-\frac{x}{\beta}}}{\frac{1}{\Gamma(a)b^a}x^{a-1}e^{-\frac{x}{b}}}}                                                      \\
+		  & = \left(\frac{\frac{1}{\Gamma(\alpha)\beta^\alpha}}{\frac{1}{\Gamma(a)b^a}} \cdot \frac{x^{\alpha - 1}}{x^{a-1}} \cdot \frac{e^{-\frac{x}{\beta}}}{e^{-\frac{x}{b}}} \right)\frac{d}{dx} \\
+		  & = \left( x^{\alpha -a} \cdot e^{\frac{x}{b} - \frac{x}{\beta}} \right) \frac{d}{dx}                                                                                                      \\
+		  & = \left( x^{\alpha - 1}e^{\frac{x}{b} - \frac{x}{\beta}} \right) \left( \left[ \frac{1}{\beta} - \frac{1}{\beta} \right] + (\alpha - a)x^{-1} \right) = 0                                \\
+		  & = \left[ \frac{1}{\beta} - \frac{1}{\beta} \right] + (\alpha - a)x^{-1} = 0                                                                                                              \\
+		  & = \left[ \frac{\alpha - a}{\frac{1}{\beta} - \frac{1}{b}} \right]_{a = \lfloor \alpha \rfloor}                                                                                           \\
+		  & = \frac{\alpha - \lfloor \alpha \rfloor}{\frac{1}{\beta} - \frac{1}{b}}
+	\end{split}
+\]
 
 \subsection{Para $a = \left\lfloor \alpha \right\rfloor$, encuentre el valor optimo de $b$}
 
