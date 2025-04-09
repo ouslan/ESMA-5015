@@ -170,7 +170,11 @@ hacer el algoritmo mas eficiente.
 
 \[
 	\begin{split}
-		\max(x) & = \frac{\alpha - \lfloor \alpha \rfloor}{\frac{1}{\beta} - \frac{1}{b}}
+		Mode_{target}     & = Mode_{candidate}                    \\
+		(\alpha - 1)\beta & = (a - 1)b                            \\
+		b                 & = \frac{(\alpha - 1)\beta}{a-1}       \\
+		\text{Como $\alpha -1 \approx \alpha $ y $a-1 \approx a$} \\
+		b                 & = \frac{\alpha \beta}{a}
 	\end{split}
 \]
 
@@ -179,17 +183,61 @@ hacer el algoritmo mas eficiente.
 
 \subsection{Describa un algoritmo \textbf{Accept-Reject} para generar una variable aleatoria con distribución $Gamma(3/2,1)$}
 
+\[
+	\begin{split}
+		M & = \frac{f(x)}{f(x)}                                                                \\
+		  & = \frac{f(x)}{g(x)} = \frac{\frac{2}{\sqrt{\pi}} x^{\frac{1}{2}} e^{-x}}{x e^{-x}} \\
+		  & = \frac{2}{\sqrt{\pi}} \cdot \frac{1}{\sqrt{x}}                                    \\
+		  & = \frac{2}{\pi}
+	\end{split}
+\]
+
+
+\begin{enumerate}
+	\item Genrar un numero $Y$ de la distribucion $Gamma(2,1)$.
+	\item Generar un numero uniiforme $U \sim U(0,1)$
+	\item Si $U \ge \frac{Y}{M g(Y)}$
+	\item Repetir el proceso hasta aceptar un valor
+\end{enumerate}
+
 
 \subsection{Algoritmo en Python}
-\subsection{Trafique el histograma de la distribución obtenida sobreponiendo la distribución deseada}
+\begin{pythonbox}[Implementacion de python]
+	\inputminted{python}{accept.py}
+\end{pythonbox}
+
+\subsection{Grafique el histograma de la distribución obtenida sobreponiendo la distribución deseada}
+\begin{pythonbox}[Implementacion de python]
+	\inputminted{python}{accept_graph.py}
+\end{pythonbox}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{gamma.png}
+	\caption{Histograma de la la gama simulada}
+\end{figure}
+
 
 \subsection{Estime $E[X^2]$ y construya la gráfica de la convergencia de los running means.}
 
-\section{Importance Sampling}
-
-\begin{pythonbox}[title={The function}]
+\[
+	\begin{split}
+		E[X^2] & = \alpha(\alpha + 1)\beta^2      \\
+		       & = \frac{3}{2}(\frac{3}{2}1)=3.75
+	\end{split}
+\]
+\begin{pythonbox}[title={The }]
 	\inputminted{python}{test.py}
 \end{pythonbox}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{gama_sum.png}
+	\caption{Histograma de la variable aleator}
+\end{figure}
+
+\section{Importance Sampling}
+
+
 
 Usando Importance Sampling estime $E_f\left[ \frac{X^5}{1+(X - 3)^2}I[X \ge 0] \right]$, donde $f$ es la
 distribucion $t$ con $v=12$ Utilice las siguientes $g$:
