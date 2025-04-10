@@ -192,8 +192,8 @@ hacer el algoritmo mas eficiente.
 
 
 \begin{enumerate}
-	\item Genrar un numero $Y$ de la distribucion $Gamma(2,1)$.
-	\item Generar un numero uniiforme $U \sim U(0,1)$
+	\item Generar un numero $Y$ de la distribución $Gamma(2,1)$.
+	\item Generar un numero uniforme $U \sim U(0,1)$
 	\item Si $U \ge \frac{Y}{M g(Y)}$
 	\item Repetir el proceso hasta aceptar un valor
 \end{enumerate}
@@ -204,7 +204,7 @@ hacer el algoritmo mas eficiente.
 	\inputminted{python}{code/accept.py}
 \end{pythonbox}
 
-\subsection{Grafique el histograma de la distribución obtenida sobreponiendo la distribución deseada}
+\subsection{Trafique el histograma de la distribución obtenida sobreponiendo la distribución deseada}
 \begin{pythonbox}[Implementacion de python]
 	\inputminted{python}{code/accept_graph.py}
 \end{pythonbox}
@@ -230,17 +230,17 @@ hacer el algoritmo mas eficiente.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{assets/gama_sum.png}
-	\caption{Histograma de la variable aleator}
+	\caption{Histograma de la variable aleatoria}
 \end{figure}
 
-\section{Importanc ee Sampling}
+\section{Importance Sampling}
 
 Usando Importance Sampling estime $E_f\left[ \frac{X^5}{1+(X - 3)^2}I[X \ge 0] \right]$, donde $f$ es la
-distribucion $t$ con $v=12$ Utilice las siguientes $g$:
+distribución $t$ con $v=12$ Utilice las siguientes $g$:
 
 \subsection{Estimador importance Sampling}
-Para cada una de estas distribuciones presente el estimador que corresponde a la summatoria definida
-por el metodo de \textbf{Importance Sampling} y que converge al valor esperado de interes
+Para cada una de estas distribuciones presente el estimador que corresponde a la sumatoria definida
+por el método de \textbf{Importance Sampling} y que converge al valor esperado de interés
 \subsubsection{$Cauchy(0,1)$}
 \[
 	\begin{split}
@@ -265,8 +265,8 @@ por el metodo de \textbf{Importance Sampling} y que converge al valor esperado d
 
 
 \subsection{Estimador Monte Carlo}
-Para cada uno presente el estimador que corresponde a la sumatoria definida por el metodo de Integracion
-Monte Carlos y que converge al valor esperado de interes.
+Para cada uno presente el estimador que corresponde a la sumatoria definida por el método de Integración
+Monte Carlos y que converge al valor esperado de interés.
 \[
 	\begin{split}
 		MC & = \frac{1}{N}\sum_{i=1}^{N}f(x) ; \text{where } x \sim student(12) \\
@@ -275,30 +275,30 @@ Monte Carlos y que converge al valor esperado de interes.
 \]
 
 
-\subsection{Implementacion}
+\subsection{Implementación}
 
-\subsubsection{Codigo para Monte Carlos}
+\subsubsection{Código para Monte Carlos}
 \begin{pythonbox}[Implementacion de Monte Carlos]
 	\inputminted{python}{code/mc.py}
 \end{pythonbox}
 
-\subsubsection{Codigo para $Cauchy(0,1)$}
+\subsubsection{Código para $Cauchy(0,1)$}
 \begin{pythonbox}[Implementacion de distribución cauchy]
 	\inputminted{python}{code/cauchy.py}
 \end{pythonbox}
 
-\subsubsection{Codigo para$Normal(0, \frac{v}{v-2})$}
+\subsubsection{Código para$Normal(0, \frac{v}{v-2})$}
 \begin{pythonbox}[Implementacion de distribución normal]
 	\inputminted{python}{code/normal.py}
 \end{pythonbox}
 
-\subsubsection{Codigo para $Exponencial(\lambda=1)$}
+\subsubsection{Código para $Exponencial(\lambda=1)$}
 \begin{pythonbox}[Implementacion de distribución Exponencial]
 	\inputminted{python}{code/exp.py}
 \end{pythonbox}
 
-\subsection{Graficas}
-Construya un asola graica y presente la convergencia de los running menas para los cuatro estimadores. Compare la varianza empirica de los
+\subsection{Gráficas}
+Construya un asola gracia y presente la convergencia de los running menas para los cuatro estimadores. Compare la varianza empírica de los
 cuatro estimadores
 
 \begin{pythonbox}[Implementacion de distribución Exponencial]
@@ -309,7 +309,7 @@ cuatro estimadores
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{assets/graph.png}
-	\caption{Histograma de la variable aleator}
+	\caption{Histograma de la variable aleatoria}
 \end{figure}
 
 \end{document}
