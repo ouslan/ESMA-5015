@@ -1,31 +1,26 @@
 import numpy as np
 
-
-# Función de densidad de la distribución objetivo (Gamma(3/2, 1))
 def f(x):
     return (2 / np.sqrt(np.pi)) * np.sqrt(x) * np.exp(-x)
 
-
-# Función de densidad de la distribución candidata (Gamma(1, 2))
 def g(x):
-    return x * np.exp(-x)
+    return 0.5 * (1 + x) * np.exp(-x)
 
-
-# Algoritmo de aceptación y rechazo
 def accept_reject(n, seed=787):
-    # Semilla para la generación de números aleatorios
-    rng = np.random.default_rng(seed=seed)
+    rng = np.random.default_rng(seed)
     samples = []
     M = 2 / np.sqrt(np.pi)
 
     while len(samples) < n:
-        # Paso 1: Generar una muestra de la distribución candidata (Gamma(1, 2))
-        Y = rng.gamma(1, 2)
 
-        # Paso 2: Generar una variable aleatoria uniforme U
-        U = rng.uniform(0, 1)
+        coin = rng.integers(0, 2)
+        if coin == 0:
+            Y = rng.gamma(shape=1, scale=1)
+        else:
+            Y = rng.gamma(shape=2, scale=1)
 
-        # Paso 3: Aceptar o rechazar
+        U = rng.uniform()
+
         if U <= f(Y) / (M * g(Y)):
             samples.append(Y)
 
