@@ -2,15 +2,15 @@ import numpy as np
 import scipy.stats as stats
 
 
-def h(X):
+def h(X: np.ndarray):
     return (X**5) / (1 + (X - 3) ** 2) * (X >= 0)
 
 
-def g_exponential(x):
+def g_exponential(x: np.ndarray):
     return np.exp(-x) * (x >= 0)
 
 
-def importance_sampling_exponential(samples):
+def importance_sampling_exponential(samples: np.ndarray):
     f_samples = stats.t.pdf(samples, df=12)
 
     g_samples = g_exponential(samples)

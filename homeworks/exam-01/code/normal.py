@@ -2,15 +2,15 @@ import numpy as np
 import scipy.stats as stats
 
 
-def h(X):
+def h(X: np.ndarray):
     return (X**5) / (1 + (X - 3) ** 2) * (X >= 0)
 
 
-def g_normal(x, v):
+def g_normal(x: np.ndarray, v: int):
     return stats.norm.pdf(x, loc=0, scale=np.sqrt(v / (v - 2)))
 
 
-def importance_sampling_normal(samples, v):
+def importance_sampling_normal(samples, v: int):
     f_samples = stats.t.pdf(samples, df=v)
     g_samples = g_normal(samples, v)
 

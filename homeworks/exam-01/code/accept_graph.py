@@ -1,10 +1,10 @@
-from accept import *
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+from accept import accept_reject
 from scipy.stats import gamma
 
 
-def main(n: int):
+def main(n: int) -> None:
     samples = accept_reject(n)
 
     # Traficar el histograma
@@ -17,13 +17,13 @@ def main(n: int):
         color="b",
         label="Histograma (muestras)",
     )
-    plt.plot(x, gamma.pdf(x, 3/2, scale=1), 'r-', label='Distribución Gamma(3/2, 1)')
+    plt.plot(x, gamma.pdf(x, 3 / 2, scale=1), "r-", label="Distribución Gamma(3/2, 1)")
 
     plt.xlabel("x")
     plt.ylabel("Densidad")
     plt.legend()
     plt.title("Histograma de la Distribución Generada vs. Distribución Objetivo")
-    plt.show()
+    plt.savefig("gamma_hist.png")
 
 
 if __name__ == "__main__":
