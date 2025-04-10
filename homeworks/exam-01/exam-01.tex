@@ -255,21 +255,21 @@ por el método de \textbf{Importance Sampling} y que converge al valor esperado 
 \[
 	\begin{split}
 		E_f\left[\frac{f(x)}{g(x)}p(x)\right] & = \frac{1}{N}\sum_{i=1}^{N}\frac{f(x)}{g(x)}p(x) ; \text{where } x \sim cauchy(0,1)                             \\
-		                                      & = \frac{1}{N}\sum_{i=1}^{N}\frac{\frac{X^5}{1+(X - 3)^2}I[X \ge 0] }{\frac{1}{\pi (1 + x^2)}} \cdot student(12)
+		                                      & = \frac{1}{N}\sum_{i=1}^{N}\frac{\frac{X^5}{1+(X - 3)^2} }{\frac{1}{\pi (1 + x^2)}} I[X \ge 0]\cdot student(12)
 	\end{split}
 \]
 \subsubsection{$Normal(0, \frac{v}{v-2})$}
 \[
 	\begin{split}
-		E_f\left[\frac{f(x)}{g(x)}p(x)\right] & = \frac{1}{N}\sum_{i=1}^{N}\frac{f(x)}{g(x)}p(x) ; \text{where } x \sim normal(0,\frac{12}{12-2}) \\
-		                                      & = \frac{1}{N}\sum_{i=1}^{N}\frac{\frac{X^5}{1+(X - 3)^2}I[X \ge 0] }{}student(12)
+		E_f\left[\frac{f(x)}{g(x)}p(x)\right] & = \frac{1}{N}\sum_{i=1}^{N}\frac{f(x)}{g(x)}p(x) ; \text{where } x \sim normal(0,\frac{12}{12-2})                                                                            \\
+		                                      & = \frac{1}{N}\sum_{i=1}^{N}\frac{\frac{X^5}{1+(X - 3)^2} }{\frac{1}{\sqrt{\frac{6}{5}}\cdot {\sqrt{2\pi}}}\exp(-\frac{x^2}{2\cdot\frac{6}{5}})} I[X \ge 0] \cdot student(12)
 	\end{split}
 \]
 \subsubsection{$Exponencial(\lambda=1)$}
 \[
 	\begin{split}
-		E_f\left[\frac{f(x)}{g(x)}p(x)\right] & = \frac{1}{N}\sum_{i=1}^{N}\frac{f(x)}{g(x)}p(x) ; \text{where } x \sim exponential(1) \\
-		                                      & = \frac{1}{N}\sum_{i=1}^{N}\frac{\frac{X^5}{1+(X - 3)^2}I[X \ge 0] }{g(x)}student(12)
+		E_f\left[\frac{f(x)}{g(x)}p(x)\right] & = \frac{1}{N}\sum_{i=1}^{N}\frac{f(x)}{g(x)}p(x) ; \text{where } x \sim exponential(1)           \\
+		                                      & = \frac{1}{N}\sum_{i=1}^{N}\frac{\frac{X^5}{1+(X - 3)^2} }{\exp(-x)}I[X \ge 0] \cdot student(12)
 	\end{split}
 \]
 
