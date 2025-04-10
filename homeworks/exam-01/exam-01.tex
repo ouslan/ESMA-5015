@@ -239,25 +239,43 @@ hacer el algoritmo mas eficiente.
 
 Usando Importance Sampling estime $E_f\left[ \frac{X^5}{1+(X - 3)^2}I[X \ge 0] \right]$, donde $f$ es la
 distribucion $t$ con $v=12$ Utilice las siguientes $g$:
-\begin{enumerate}
-	\item $Cauchy(0,1)$
-	\item $Normal(0, \frac{v}{v-2})$
-	\item $Exponencial(\lambda=1)$
-\end{enumerate}
 
 \subsection{Estimador importance Sampling}
 Para cada una de estas distribuciones presente el estimador que corresponde a la summatoria definida
 por el metodo de \textbf{Importance Sampling} y que converge al valor esperado de interes
 \subsubsection{$Cauchy(0,1)$}
+\[
+	\begin{split}
+		E_f\left[\frac{f(x)}{g(x)}p(x)\right] & = \frac{1}{N}\sum_{i=1}^{N}\frac{f(x)}{g(x)}p(x) ; \text{where } x \sim cauchy(0,1)                             \\
+		                                      & = \frac{1}{N}\sum_{i=1}^{N}\frac{\frac{X^5}{1+(X - 3)^2}I[X \ge 0] }{\frac{1}{\pi (1 + x^2)}} \cdot student(12)
+	\end{split}
+\]
 \subsubsection{$Normal(0, \frac{v}{v-2})$}
+\[
+	\begin{split}
+		E_f\left[\frac{f(x)}{g(x)}p(x)\right] & = \frac{1}{N}\sum_{i=1}^{N}\frac{f(x)}{g(x)}p(x) ; \text{where } x \sim normal(0,\frac{12}{12-2}) \\
+		                                      & = \frac{1}{N}\sum_{i=1}^{N}\frac{\frac{X^5}{1+(X - 3)^2}I[X \ge 0] }{}student(12)
+	\end{split}
+\]
 \subsubsection{$Exponencial(\lambda=1)$}
+\[
+	\begin{split}
+		E_f\left[\frac{f(x)}{g(x)}p(x)\right] & = \frac{1}{N}\sum_{i=1}^{N}\frac{f(x)}{g(x)}p(x) ; \text{where } x \sim exponential(1) \\
+		                                      & = \frac{1}{N}\sum_{i=1}^{N}\frac{\frac{X^5}{1+(X - 3)^2}I[X \ge 0] }{g(x)}student(12)
+	\end{split}
+\]
+
 
 \subsection{Estimador Monte Carlo}
 Para cada uno presente el estimador que corresponde a la sumatoria definida por el metodo de Integracion
 Monte Carlos y que converge al valor esperado de interes.
-\subsubsection{$Cauchy(0,1)$}
-\subsubsection{$Normal(0, \frac{v}{v-2})$}
-\subsubsection{$Exponencial(\lambda=1)$}
+\[
+	\begin{split}
+		MC & = \frac{1}{N}\sum_{i=1}^{N}f(x) ; \text{where } x \sim student(12) \\
+		   & = \frac{1}{N}\sum_{i=1}^{N}f\frac{X^5}{1+(X - 3)^2}I[X \ge 0]
+	\end{split}
+\]
+
 
 \subsection{Implementacion}
 
