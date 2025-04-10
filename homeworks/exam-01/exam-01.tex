@@ -133,8 +133,6 @@
 \date{}
 
 
-
-
 % Begin document
 \begin{document}
 \maketitle
@@ -203,16 +201,16 @@ hacer el algoritmo mas eficiente.
 
 \subsection{Algoritmo en Python}
 \begin{pythonbox}[Implementacion de python]
-	\inputminted{python}{accept.py}
+	\inputminted{python}{code/accept.py}
 \end{pythonbox}
 
 \subsection{Grafique el histograma de la distribución obtenida sobreponiendo la distribución deseada}
 \begin{pythonbox}[Implementacion de python]
-	\inputminted{python}{accept_graph.py}
+	\inputminted{python}{code/accept_graph.py}
 \end{pythonbox}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{gamma.png}
+	\includegraphics[width=0.8\textwidth]{assets/gamma.png}
 	\caption{Histograma de la la gama simulada}
 \end{figure}
 
@@ -226,16 +224,16 @@ hacer el algoritmo mas eficiente.
 	\end{split}
 \]
 \begin{pythonbox}[title={The }]
-	\inputminted{python}{test.py}
+	\inputminted{python}{code/test.py}
 \end{pythonbox}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{gama_sum.png}
+	\includegraphics[width=0.8\textwidth]{assets/gama_sum.png}
 	\caption{Histograma de la variable aleator}
 \end{figure}
 
-\section{Importance Sampling}
+\section{Importanc ee Sampling}
 
 Usando Importance Sampling estime $E_f\left[ \frac{X^5}{1+(X - 3)^2}I[X \ge 0] \right]$, donde $f$ es la
 distribucion $t$ con $v=12$ Utilice las siguientes $g$:
@@ -279,9 +277,39 @@ Monte Carlos y que converge al valor esperado de interes.
 
 \subsection{Implementacion}
 
+\subsubsection{Codigo para Monte Carlos}
+\begin{pythonbox}[Implementacion de Monte Carlos]
+	\inputminted{python}{code/mc.py}
+\end{pythonbox}
+
+\subsubsection{Codigo para $Cauchy(0,1)$}
+\begin{pythonbox}[Implementacion de distribución cauchy]
+	\inputminted{python}{code/cauchy.py}
+\end{pythonbox}
+
+\subsubsection{Codigo para$Normal(0, \frac{v}{v-2})$}
+\begin{pythonbox}[Implementacion de distribución normal]
+	\inputminted{python}{code/normal.py}
+\end{pythonbox}
+
+\subsubsection{Codigo para $Exponencial(\lambda=1)$}
+\begin{pythonbox}[Implementacion de distribución Exponencial]
+	\inputminted{python}{code/exp.py}
+\end{pythonbox}
+
 \subsection{Graficas}
 Construya un asola graica y presente la convergencia de los running menas para los cuatro estimadores. Compare la varianza empirica de los
 cuatro estimadores
 
+\begin{pythonbox}[Implementacion de distribución Exponencial]
+	\inputminted{python}{code/all_graphs.py}
+\end{pythonbox}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{assets/graph.png}
+	\caption{Histograma de la variable aleator}
+\end{figure}
 
 \end{document}
